@@ -92,6 +92,20 @@ deploy_python_backend ()
 
 }
 
+
+deploy_frontend()
+{
+    oc project amq-streams
+
+    printInfo "1.  Grab the backend route"
+
+    oc get route backend --no-headers | awk '{print $2}'
+
+    # Now instead of patching the code we should be using a generic container
+    # And injecting the route
+
+}
+
 cleanup_kafka()
 {
     printInfo "Need to clean up our Kafka environment"
